@@ -49,9 +49,7 @@ export const Content = () => {
       <InputContainer>
         <div className="editorContainer">
           <Editor
-            tinymceScriptSrc={
-              import.meta.env.VITE_PUBLIC_URL + "/tinymce/tinymce.min.js"
-            }
+            tinymceScriptSrc={"/tinymce/tinymce.min.js"}
             onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue=""
             onEditorChange={handleEditorChange}
