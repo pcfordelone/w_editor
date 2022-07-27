@@ -1,3 +1,6 @@
+/public/tinymce/
+.env
+
 # Logs
 logs
 *.log
