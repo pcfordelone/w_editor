@@ -7,19 +7,15 @@ import { notify } from "../../utils/notification";
 import { Container, InputContainer } from "./styles";
 
 export const Content = () => {
-  const editorRef = useRef<Editor>(null);
   const editedTextDivRef = useRef<HTMLDivElement>(null);
   const [text, setText] = useState<string>("");
 
-  console.log(editedTextDivRef.current?.innerText);
+  const handleEditorChange = async (content: any, editor: any) => {
+    const editorText: string = content;
+    const updatedText = await editHTMLTags(editorText);
+    console.log(content);
 
-  const handleEditorChange = async () => {
-    if (editorRef.current) {
-      const editorText: string = editorRef.current.getContent();
-      const updatedText = await editHTMLTags(editorText);
-
-      setText(updatedText);
-    }
+    setText(updatedText);
   };
 
   const editHTMLTags = async (value: string) => {
@@ -33,6 +29,7 @@ export const Content = () => {
       .replaceAll("</em>", "_")
       .replaceAll("<s>", "~")
       .replaceAll("</s>", "~");
+
     return editedText;
   };
 
@@ -50,7 +47,7 @@ export const Content = () => {
         <div className="editorContainer">
           <Editor
             tinymceScriptSrc={"/tinymce/tinymce.min.js"}
-            onInit={(evt, editor) => (editorRef.current = editor)}
+            //onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue=""
             onEditorChange={handleEditorChange}
             init={{
@@ -58,6 +55,7 @@ export const Content = () => {
               width: "100%",
               max_height: 500,
               menubar: false,
+              placeholder: "Write anything here",
               plugins: [
                 "emoticons",
                 "advlist",
