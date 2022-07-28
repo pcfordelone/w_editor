@@ -4,7 +4,7 @@ export const Container = styled.main`
   flex: 1;
 
   width: 70rem;
-  margin: 2rem auto;
+  margin: 1rem auto;
 
   display: flex;
   flex-wrap: wrap;
@@ -24,12 +24,11 @@ export const Container = styled.main`
   }
 
   a.buyMeACoffee {
-    margin-top: 1rem;
     background: transparent;
     border: 3px solid ${(props) => props.theme["gray-600"]};
     border-radius: 8px;
     padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: ${(props) => props.theme["gray-300"]};
 
     display: flex;

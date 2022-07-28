@@ -20,7 +20,9 @@ export const Content = () => {
 
   const editHTMLTags = async (value: string) => {
     const editedText = value
+      .replaceAll("<br>", " ")
       .replaceAll("&nbsp;</strong>", "* ")
+      .replaceAll("&nbsp;</strong></em>", "*_ ")
       .replaceAll("&nbsp;</em>", "_ ")
       .replaceAll("&nbsp;</s>", "~ ")
       .replaceAll("<strong>", "*")
@@ -47,7 +49,6 @@ export const Content = () => {
         <div className="editorContainer">
           <Editor
             tinymceScriptSrc={"/tinymce/tinymce.min.js"}
-            //onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue=""
             onEditorChange={handleEditorChange}
             init={{
@@ -56,6 +57,7 @@ export const Content = () => {
               max_height: 500,
               menubar: false,
               placeholder: "Write anything here",
+              resize: false,
               plugins: [
                 "emoticons",
                 "advlist",
@@ -83,6 +85,10 @@ export const Content = () => {
         </div>
       </InputContainer>
 
+      <div className="ads">
+        <p>Ads Area</p>
+      </div>
+
       <a
         href="https://www.buymeacoffee.com/pcfordelone"
         target="_blank"
@@ -91,10 +97,6 @@ export const Content = () => {
         <Coffee size={40} />
         Buy me a coffee
       </a>
-
-      <div className="ads">
-        <p>Ads Area</p>
-      </div>
     </Container>
   );
 };
